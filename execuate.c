@@ -9,7 +9,7 @@
 int execuate_shell(char **command, char **argv)
 {
 	pid_t pid;
-	int i;
+	int i = 0;
 
 	pid = fork();
 
@@ -25,24 +25,23 @@ int execuate_shell(char **command, char **argv)
 		if (execve(command[0], command, environ) == -1)
 		{
 			perror(argv[0]);
-			free(command);
 			exit(EXIT_FAILURE);
 		}
-
-		for (i = 0; command[i]; i++)
-		{
-			simple_shell(command[i]);
-			simple_shell("\n");
-		}
-		command[i] = NULL;
-		free(command);
-		free(argv);
-		argv = NULL;
+			for (i = 0; command[i]; i++)
+			{
+				simple_shell(command[i]);
+				simple_shell("\n");
+			}
+			free(command);
+			command = NULL;
+			free(argv);
+			argv = NULL;
+			exit(EXIT_SUCCESS);
 	}
-
 	else
 	{
 		wait(NULL);
 	}
-	return (i);
+		return (i);
+	
 }

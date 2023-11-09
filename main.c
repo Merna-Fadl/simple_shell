@@ -10,7 +10,7 @@ int main(int ac, char **argv)
 {
 	char *line;
 	char **command;
-	int status;
+	int status = 0;
 	(void) ac;
 
 	for ( ; 1; )
@@ -18,6 +18,8 @@ int main(int ac, char **argv)
 		line = read_line();
 		if (line == NULL)
 		{
+			if (isatty(STDIN_FILENO))
+				simple_shell("\n");
 			return (status);
 		}
 
@@ -27,6 +29,7 @@ int main(int ac, char **argv)
 			continue;
 
 	       status = execuate_shell(command, argv);
+
 
 
 	}

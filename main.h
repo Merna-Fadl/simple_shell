@@ -11,7 +11,6 @@
 #include <sys/wait.h>
 
 extern char **environ;
-
 char *read_line(void);
 void simple_shell(const char *massage);
 char **tokenizer(char *line);

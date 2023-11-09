@@ -17,11 +17,18 @@ char **tokenizer(char *line)
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(strdup(line), " \n");
+	if (!token)
+	{
+		free(line);
+		return NULL;
+	}
+
 	command = malloc(sizeof(char *) * (count + 1));
 
 	if (!command)
 	{
 		free(line);
+		free(token);
 		return (NULL);
 	}
 
@@ -29,7 +36,14 @@ char **tokenizer(char *line)
 	{
 		command[count] = token;
 		token = strtok(NULL, " \n");
+	if (!token)
+	{
+		command[count + 1] = NULL;
+		break;
 	}
+	}
+
 	free(line);
+	free(token);
 	return (command);
 }
