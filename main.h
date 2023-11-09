@@ -9,8 +9,9 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-
+#include <sys/stat.h>
 extern char **environ;
+char *_strdup(const char *str);
 char *read_line(void);
 void simple_shell(const char *massage);
 char **tokenizer(char *line);

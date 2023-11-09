@@ -16,7 +16,7 @@ char **tokenizer(char *line)
 		perror("ERROR");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(strdup(line), " \n");
+	token = strtok(_strdup(line), " \n");
 	if (!token)
 	{
 		free(line);
