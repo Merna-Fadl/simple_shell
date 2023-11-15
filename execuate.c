@@ -1,9 +1,9 @@
 #include "main.h"
-/*
- * execuate_shell - function to execute
- * @command: massage to execuate
+/**
+ * execuate_shell - function that exeuate program
+ * @command: command to exeuate
  * @argv: argument
- * Return: 0
+ * Return: nothing
  */
 int execuate_shell(char **command, char **argv)
 {
@@ -27,22 +27,19 @@ int execuate_shell(char **command, char **argv)
 		{
 			exit(EXIT_SUCCESS);
 		}
-		if (access(command[0], X_OK) == 0)
-		{
-			if (execve(command[0],  command, environ) == -1)
+		if (execve(command[0],  command, environ) == -1)
 		{
 			perror(argv[0]);
 			exit(EXIT_FAILURE);
 		}
-			for (i = 0; command[i]; i++)
-			{
-				simple_shell(command[i]);
-				simple_shell("\n");
-			}
-			free(command);
-			free(argv);
-			exit(EXIT_SUCCESS);
+		for (i = 0; command[i]; i++)
+		{
+			simple_shell(command[i]);
+			simple_shell("\n");
 		}
+		free(command);
+		free(argv);
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{

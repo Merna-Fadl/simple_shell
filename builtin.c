@@ -1,5 +1,9 @@
 #include "main.h"
-
+/**
+ * buildin_command - function that buildin
+ * @command: argument
+ * Return: 0
+ */
 
 int buildin_command(char **command)
 {
@@ -30,6 +34,7 @@ int buildin_command(char **command)
 	else if (strcmp(command[0], "exit") == 0)
 	{
 		exit(EXIT_SUCCESS);
+		exit(0);
 		return (1);
 	}
 	else
