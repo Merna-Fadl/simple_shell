@@ -20,7 +20,7 @@ char **tokenizer(char *line)
 	if (!token)
 	{
 		free(line);
-		return NULL;
+		return (NULL);
 	}
 
 	command = malloc(sizeof(char *) * (count + 1));

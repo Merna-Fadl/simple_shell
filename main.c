@@ -29,8 +29,5 @@ int main(int ac, char **argv)
 			continue;
 
 	       status = execuate_shell(command, argv);
-
-
-
 	}
 }
